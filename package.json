@@ -1,14 +1,19 @@
 {
   "name": "node-logger-web",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Web based node logger",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc-builder prod",
+    "deploy": "npm run build && npm publish"
   },
   "author": "FragnaroK",
   "license": "MIT",
   "dependencies": {
     "typescript": "^5.2.2"
-  }
+  },
+  "files": [
+    "build/**/*"
+  ]
 }

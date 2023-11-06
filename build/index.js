@@ -39,7 +39,7 @@ class Logger {
         if (this.logs[type].length > 50) {
             this.logs[type].shift();
         }
-        this.logs[type].push(message);
+        this.logs[type].push(`${message} - ${args.join(" ")}`);
     }
     setDebugMode(mode) {
         this.debugMode = mode;
