@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class Logger {
     constructor(origin, debugMode = false) {
+        this.debugMode = false;
         this.colors = {
             r: "\x1b[0m",
             red: "\x1b[31m",
@@ -21,7 +22,6 @@ class Logger {
             hidden: "\x1b[8m",
             strikethrough: "\x1b[9m",
         };
-        this.debugMode = false;
         this.logs = {
             error: [],
             info: [],
@@ -40,6 +40,9 @@ class Logger {
             this.logs[type].shift();
         }
         this.logs[type].push(`${message} - ${args.join(" ")}`);
+    }
+    getLogs() {
+        return this.logs;
     }
     setDebugMode(mode) {
         this.debugMode = mode;

@@ -15,6 +15,8 @@ interface LogCollection {
 
 export default class Logger implements LoggerInterface {
 
+    private origin: string;
+    private debugMode: boolean = false;
     private colors = {
         r: "\x1b[0m",
         red: "\x1b[31m",
@@ -33,17 +35,14 @@ export default class Logger implements LoggerInterface {
         inverse: "\x1b[7m",
         hidden: "\x1b[8m",
         strikethrough: "\x1b[9m",
-    }
-
-    private origin: string;
-    private debugMode: boolean = false;
+    } as const;
 
     public logs: LogCollection = {
         error: [],
         info: [],
         debug: [],
         log: []
-    }
+    } 
 
     constructor(origin: string, debugMode: boolean = false) {
         this.origin = origin;
@@ -67,24 +66,28 @@ export default class Logger implements LoggerInterface {
         this.logs[type].push(`${message} - ${args.join(" ")}`);
     }
 
-    setDebugMode(mode: boolean) {
+    public getLogs() {
+        return this.logs;
+    }
+
+    public setDebugMode(mode: boolean) {
         this.debugMode = mode;
     }
 
-    l(message: string, ...args: any[]) {
+    public l(message: string, ...args: any[]) {
         const log = this.formatedMessage(`${this.colors.dim}${message}${this.colors.r}`)
         console.log(log, ...args);
         this.logToCollection("log", log, ...args)
 
     }
 
-    e(message: string, ...args: any[]) {
+    public e(message: string, ...args: any[]) {
         const log = this.formatedMessage(`${this.colors.red}${message}${this.colors.r}`);
         console.error(log, ...args);
         this.logToCollection("error", log, ...args)
     }
 
-    d(message: string, ...args: any[]) {
+    public d(message: string, ...args: any[]) {
         if (this.debugMode) {
             const log = this.formatedMessage(`${this.colors.yellow}${message}${this.colors.r}`)
             console.debug(`${this.colors.red}(DEBUG)${this.colors.r}${log}`, ...args);
@@ -92,13 +95,13 @@ export default class Logger implements LoggerInterface {
         }
     }
 
-    i(message: string, ...args: any[]) {
+    public i(message: string, ...args: any[]) {
         const log = this.formatedMessage(`${this.colors.cyan}${message}${this.colors.r}`)
         console.info(log, ...args);
         this.logToCollection("info", log, ...args)
     }
 
-    blank(lines: number = 1) {
+    public blank(lines: number = 1) {
         for (let i = 0; i < lines; i++) {
             console.log();
         }

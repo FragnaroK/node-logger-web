@@ -1,6 +1,6 @@
 {
   "name": "node-logger-web",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Web based node logger",
   "main": "build/index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   },
   "files": [
     "build/**/*"
-  ]
+  ],
+  "devDependencies": {
+    "@fragnarok/tsc-builder": "^1.0.5"
+  }
 }
