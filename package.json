@@ -1,10 +1,10 @@
 {
   "name": "node-logger-web",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Web based node logger",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Warning: No tests implemented\" && exit 0", 
     "build": "tsc-builder prod",
     "deploy": "npm run build && npm publish"
   },
