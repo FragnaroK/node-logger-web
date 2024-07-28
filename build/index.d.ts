@@ -13,6 +13,7 @@ interface LogCollection {
 export default class Logger implements LoggerInterface {
     private origin;
     private debugMode;
+    private isChrome;
     private colors;
     logs: LogCollection;
     constructor(origin: string, debugMode?: boolean);

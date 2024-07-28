@@ -3,24 +3,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class Logger {
     constructor(origin, debugMode = false) {
         this.debugMode = false;
+        this.isChrome = !!window.chrome;
         this.colors = {
-            r: "\x1b[0m",
-            red: "\x1b[31m",
-            green: "\x1b[32m",
-            yellow: "\x1b[33m",
-            blue: "\x1b[34m",
-            magenta: "\x1b[35m",
-            cyan: "\x1b[36m",
-            white: "\x1b[37m",
-            gray: "\x1b[90m",
-            grey: "\x1b[90m",
-            bold: "\x1b[1m",
-            dim: "\x1b[2m",
-            italic: "\x1b[3m",
-            underline: "\x1b[4m",
-            inverse: "\x1b[7m",
-            hidden: "\x1b[8m",
-            strikethrough: "\x1b[9m",
+            r: this.isChrome ? "\x1b[0m" : '',
+            red: this.isChrome ? "\x1b[31m" : '',
+            green: this.isChrome ? "\x1b[32m" : '',
+            yellow: this.isChrome ? "\x1b[33m" : '',
+            blue: this.isChrome ? "\x1b[34m" : '',
+            magenta: this.isChrome ? "\x1b[35m" : '',
+            cyan: this.isChrome ? "\x1b[36m" : '',
+            white: this.isChrome ? "\x1b[37m" : '',
+            gray: this.isChrome ? "\x1b[90m" : '',
+            grey: this.isChrome ? "\x1b[90m" : '',
+            bold: this.isChrome ? "\x1b[1m" : '',
+            dim: this.isChrome ? "\x1b[2m" : '',
+            italic: this.isChrome ? "\x1b[3m" : '',
+            underline: this.isChrome ? "\x1b[4m" : '',
+            inverse: this.isChrome ? "\x1b[7m" : '',
+            hidden: this.isChrome ? "\x1b[8m" : '',
+            strikethrough: this.isChrome ? "\x1b[9m" : '',
         };
         this.logs = {
             error: [],
